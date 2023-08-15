@@ -1,0 +1,168 @@
+*{
+  font-family: inherit;
+  font-size: 16px;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.appBg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height:100vh;
+  background: url('../public/business-table-office-map-workplace-learn-simple-powerpoint-background_7817e2a186__960_540.png');
+  background-size: cover;
+}
+.loginForm{
+  background-color: rgb(255,255,255,0.33);
+  box-shadow: 0px 8px 32px 0 rgba(0, 0, 255, 0.33);
+  backdrop-filter: blur(3px) ;
+  padding: 0px 16px 16px 16px;
+  border-radius: 16px;
+}
+.socialLogin{
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  color: white;
+  font-size: 30px;
+}
+.socialIcon{
+  cursor: pointer;
+}
+.groupLogoLeft{
+text-align: center;
+margin-top: 25px;
+}
+.groupLogoLeft:hover{
+  background-color: #e7f3ff;
+  border-radius: 20px;
+}
+.logoLeft{
+  width: 35px;
+  height: 35px
+}
+.postContent{
+  padding: 10px;
+  border: 1px solid #e8e9eb;
+  margin-left:60px;
+  margin-right: 220px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.headerPost{
+  padding: 5px;
+ 
+}
+.avatarUser{
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+}
+.dropDown{
+  font-size: 26px;
+  font-weight: bold;
+  color: #65676b;
+}
+
+.createAt{
+  margin-top: 4px;
+}
+.bodyContent{
+  font-size: 18px;
+  margin-top: 20px;
+}
+.imageContentDiv{
+  text-align: center;
+}
+.imageContent{
+  margin-top: 20px;
+  width: 75%;
+  height: 500px;
+}
+.interact{
+  font-size: 18px;
+  border-top: 1px solid #ced0d4;
+  border-bottom: 1px solid #ced0d4;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0 10px 0;
+  color: #77797c;
+}
+
+.btnStt{
+color: #77797c;
+text-decoration: none;
+}
+.totalLike{
+  margin-top: 20px;
+}
+.textInteract{
+  font-size: 18px;
+  font-weight: bold;
+  
+}
+.listComment{
+  margin-top: 20px;
+}
+.contentComment{
+  padding: 0 10px 10px 10px ;
+  margin-left: 10px;
+
+background-color:#f0f2f5 ;
+border-radius: 20px;
+}
+.commentPost{
+  margin-top: 20px;
+}
+.groupList{
+  text-decoration: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 5px;
+
+}
+.groupList:hover{
+  background-color: #e5e5e5;
+
+}
+
