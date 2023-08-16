@@ -3,7 +3,10 @@ export interface Comment {
   content: number;
   userId: number | any;
   postId: number;
-  fullName?: string;
+  user?: {
+    firstName: string;
+    lastName: string;
+  };
 }
 export interface PostComment {
   commentId?: number;

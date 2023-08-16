@@ -11,27 +11,25 @@ import { Post, AddPost } from "../models/post/post";
 
 const PostContent: React.FC = () => {
   const [initLoading, setInitLoading] = useState(true);
-  const [posts, setPosts] = useState<Post[]>([]);
+  // const [posts, setPosts] = useState<Post[]>([]);
   const { keyWord } = useContext(SearchContext);
   const [editingItem, setEditingItem] = useState<Post | null>(null);
-
-  const { user } = useContext(UserContext);
-  useEffect(() => {}, [posts]);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      axios
-        .get(`https://localhost:44332/api/Post/getallpost?keyword=${keyWord}`, {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        })
-        .then((respose) => {
-          setInitLoading(false);
-          setPosts(respose.data);
-        });
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [keyWord]);
+  // useEffect(() => {}, [posts]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     axios
+  //       .get(`https://localhost:44332/api/Post/getallpost?keyword=${keyWord}`, {
+  //         headers: {
+  //           Authorization: "Bearer " + localStorage.getItem("token"),
+  //         },
+  //       })
+  //       .then((respose) => {
+  //         setInitLoading(false);
+  //         setPosts(respose.data);
+  //       });
+  //   }, 500);
+  //   return () => clearTimeout(timer);
+  // }, [keyWord]);
   return (
     <>
       <Row>
@@ -51,11 +49,7 @@ const PostContent: React.FC = () => {
 
       <div style={{ marginLeft: 1000 }}></div>
 
-      <PostTable
-      // listPosts={posts}
-      // deletePost={handleDelete}
-      // handleUpdate={handleUpdate}
-      />
+      <PostTable />
     </>
   );
 };

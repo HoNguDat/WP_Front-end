@@ -117,15 +117,15 @@ const Root: React.FC = () => {
                             <Row>
                               <Col span={2}>
                                 <img
-                                  style={{ width: 30, height: 30 }}
-                                  src="https://cdn3.vectorstock.com/i/1000x1000/68/82/teamwork-group-planning-and-creating-icon-vector-21386882.jpg"
+                                  style={{ width: 40, height: 40 }}
+                                  src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/355480849_255496040415343_3963360558927105517_n.jpg?stp=c11.0.64.64a_cp0_dst-jpg_p64x64&_nc_cat=109&ccb=1-7&_nc_sid=b81613&_nc_ohc=-z7sSBLnpQYAX8hC_Tw&_nc_ht=scontent.fsgn5-8.fna&uss=34fbe66c31a86804&odm=ZnV0dXJpZnkud29ya3BsYWNlLmNvbQ&oe2=64DFEC1F&oe=64DAF183&oh=00_AfBu2JbdMojKaM_yH1kSN81top66t5-KsbtYfOLgjcROEQ"
                                 ></img>
                               </Col>
                               <Col span={22}>
                                 <p
                                   style={{
-                                    paddingLeft: 20,
-                                    paddingTop: 4,
+                                    paddingLeft: 25,
+                                    paddingTop: 6,
                                   }}
                                 >
                                   {group.name}
@@ -160,16 +160,16 @@ const Root: React.FC = () => {
                               <Col span={2}>
                                 {" "}
                                 <img
-                                  style={{ width: 30, height: 30 }}
-                                  src="https://i.pinimg.com/736x/90/57/0a/90570addee2645866a597530721f37fd.jpg"
+                                  style={{ width: 40, height: 40 }}
+                                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
                                 ></img>
                               </Col>
                               <Col span={22}>
                                 {" "}
                                 <p
                                   style={{
-                                    paddingLeft: 20,
-                                    paddingTop: 4,
+                                    paddingLeft: 25,
+                                    paddingTop: 6,
                                   }}
                                 >
                                   {user.lastName} {user.firstName}

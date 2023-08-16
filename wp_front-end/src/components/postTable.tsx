@@ -4,29 +4,21 @@ import { useAppDispatch, useAppSelector } from "../app/hook";
 import { fetchPosts, deletePost } from "../features/post/postSlice";
 import React, { useContext, useEffect, useState } from "react";
 
-import { Col, Input, Row, Button, Dropdown, Space, MenuProps } from "antd";
+import { Col, Input, Row } from "antd";
 import {
   CaretRightOutlined,
   CommentOutlined,
-  DeleteOutlined,
-  DownOutlined,
-  LikeOutlined,
   ShareAltOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
-// interface PostTable {
-//   listPosts: Post[];
-//   deletePost: (postId: any) => void;
-//   handleUpdate: (post: Post) => Promise<void>;
-// }
-// interface PostComponentProps {
-//   post: Post;
-// }
+import { Form } from "react-router-dom";
+import { fetchComments } from "../features/comment/commentSlice";
+
 const PostTable = () => {
   const [buttonClicked, setButtonClicked] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const post = useAppSelector((state) => state.post);
-  const user = useAppSelector((state) => state.user.user);
+  const comment = useAppSelector((state) => state.comment);
+  // const users = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchPosts());
@@ -34,22 +26,22 @@ const PostTable = () => {
   function handleDelete(id: any) {
     dispatch(deletePost(id));
   }
-  const handeLike = (postId: any) => {
-    axios
-      .put(`https://localhost:44332/api/Post/${postId}/like`)
-      .then((response) => {
-        alert("Like success");
-      });
-    setButtonClicked(!buttonClicked);
-  };
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+  // const handeLike = (postId: any) => {
+  //   axios
+  //     .put(`https://localhost:44332/api/Post/${postId}/like`)
+  //     .then((response) => {
+  //       alert("Like success");
+  //     });
+  //   setButtonClicked(!buttonClicked);
+  // };
+  // const handleMouseEnter = () => {
+  //   setIsHovered(true);
+  // };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
+  // function handleInputChange(event: any) {
+  //   const { commnet, setComment } = event.target;
+  //   setComment;
+  // }
   return (
     <>
       {post.posts.map((post) => (
@@ -60,7 +52,7 @@ const PostTable = () => {
                 <Col span={1}>
                   {" "}
                   <img
-                    src="https://vapa.vn/wp-content/uploads/2022/12/avatar-doremon-cute-001.jpg"
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
                     className="avatarUser"
                   ></img>
                 </Col>
@@ -71,7 +63,7 @@ const PostTable = () => {
                       <strong>{post.groupName}</strong>
                     </span>
                   </span>
-                  <div className="createAt">{post.createdDateTime}</div>
+                  <div className="createAt">{post?.createdDateTime}</div>
                 </Col>
                 <Col span={4} style={{ left: 70 }}>
                   <div className="dropDown">
@@ -143,9 +135,6 @@ const PostTable = () => {
                 <Col span={8}>
                   <a
                     className="btnStt"
-                    onClick={() => handeLike(post.postId)}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
                     style={{
                       color: buttonClicked ? "#2962ff" : "#77797c",
                       backgroundColor: "white",
@@ -183,29 +172,61 @@ const PostTable = () => {
               </Row>
             </div>
             <div className="listComment">
-              <Row>
-                <Col span={1}>
-                  {" "}
-                  <img
-                    src="https://vapa.vn/wp-content/uploads/2022/12/avatar-doremon-cute-001.jpg"
-                    className="avatarUser"
-                  ></img>
-                </Col>
-                <Col className="contentComment" span={19}>
-                  <span style={{ fontSize: 15, fontWeight: 620, padding: 5 }}>
-                    {post.fullName}
-                  </span>
-                  <div style={{ fontSize: 15, padding: 5 }}>Comment 1</div>
-                </Col>
-                <Col span={4} style={{ left: 70 }}></Col>
-              </Row>
+              {post.comments &&
+                post.comments.map((item) => (
+                  <Row style={{ marginTop: 15 }}>
+                    <Col span={1}>
+                      {" "}
+                      <img
+                        src="https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHVzZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                        className="avatarUser"
+                      ></img>
+                    </Col>
+                    <Col span={19}>
+                      <div className="contentComment">
+                        <span
+                          style={{ fontSize: 15, fontWeight: 620, padding: 5 }}
+                        >
+                          {item.user?.firstName} {item.user?.lastName}
+                        </span>
+                        <div style={{ fontSize: 15, padding: 5 }}>
+                          {item.content}
+                        </div>
+                      </div>
+                    </Col>
+                    <Col span={4} style={{ left: 70 }}></Col>
+                  </Row>
+                ))}
             </div>
+            {post.comments?.map((comment) => (
+              <div className="listComment">
+                <Row>
+                  <Col span={1}>
+                    {" "}
+                    <img
+                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                      className="avatarUser"
+                    ></img>
+                  </Col>
+                  <Col
+                    className="contentComment"
+                    span={19}
+                    style={{ paddingLeft: 8 }}
+                  >
+                    {/* <span>{item.content}</span> */}
+                    <div className="createAt">{comment.content}</div>
+                  </Col>
+                  <Col span={4} style={{ left: 70 }}></Col>
+                </Row>
+              </div>
+            ))}
+
             <div className="commentPost">
               <Row>
                 <Col span={1}>
                   {" "}
                   <img
-                    src="https://yt3.googleusercontent.com/g3j3iOUOPhNxBCNAArBqiYGzHzCBIzr_Al8mdvtBJeZMGFDblnU5rlVUt6GY01AUwm7Cp70J=s900-c-k-c0x00ffffff-no-rj"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT19urE4x5YYNW5YH4Hhfos32BKk34TsZuTcg&usqp=CAU"
                     className="avatarUser"
                   ></img>
                 </Col>
@@ -218,10 +239,12 @@ const PostTable = () => {
                     paddingLeft: 7,
                   }}
                 >
-                  <Input
-                    style={{ height: 40 }}
-                    placeholder="Write a comment..."
-                  ></Input>
+                  <div>
+                    <Input
+                      style={{ height: 40 }}
+                      placeholder="Write a comment..."
+                    ></Input>
+                  </div>
                 </Col>
               </Row>
             </div>

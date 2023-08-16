@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Post } from "../../models/post/post";
-import { AddPost } from "../../models/post/post";
+import { AddPost, Post } from "../../models/post/post";
+
 import {
   savePostService,
   deletePostService,
@@ -21,13 +21,24 @@ const initialState: InitialState = {
 export const fetchPosts = createAsyncThunk("post/fetchPosts", () => {
   return getAllPostService();
 });
-export const addPost = createAsyncThunk(
-  "post/addPost",
-  async (post: AddPost) => {
-    const result = await savePostService(post);
-    return (await result).data;
-  }
-);
+export const addPost = createAsyncThunk("post/addPost", (post: AddPost) => {
+  return savePostService(post);
+});
+// export const addPost = createAsyncThunk(
+//   "post/addPost",
+//   async (post: AddPost) => {
+//     const result = await axios.post(
+//       "https://localhost:44332/api/Post/addPost",
+//       post,
+//       {
+//         headers: {
+//           "Content-Type": "multipart/form-data",
+//         },
+//       }
+//     );
+//     return (await result).data;
+//   }
+// );
 export const deletePost = createAsyncThunk(
   "post/deletePost",
   async (id: number) => {

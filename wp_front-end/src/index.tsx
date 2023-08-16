@@ -22,10 +22,10 @@ root.render(
         <React.StrictMode>
           <React.Fragment>
             <Routes>
-              <Route path="/homepage" element={<Root />} />
+              <Route path="/home" element={<Root />} />
               <Route path="/register" element={<Register />}></Route>
               <Route path="/login" element={<Login />}></Route>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<Root />} />
               {/* <Route path="/error" element={<Error />} /> */}
             </Routes>
           </React.Fragment>

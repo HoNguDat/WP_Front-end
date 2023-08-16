@@ -51,7 +51,7 @@ const Login: React.FC = () => {
           toast.success("Login success !");
           alert("Login success !");
         });
-      navigate("/homepage");
+      navigate("/home");
       // var date = new Date();
       // date.setDate(date.getDate() + 1);
       // setCookie("jwt", data, { expires: date });

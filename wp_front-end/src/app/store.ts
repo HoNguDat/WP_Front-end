@@ -2,14 +2,16 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import groupReducer from "../features/group/groupSlice";
 import postReducer from "../features/post/postSlice";
 import userReducer from "../features/user/userSlice";
+import commentReducer from "../features/comment/commentSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 const rootReducer = combineReducers({
   post: postReducer,
   user: userReducer,
   group: groupReducer,
+  comment: commentReducer,
 });
-const persistConfig = { key: "root", storage, blacklist: ["post"] };
+const persistConfig = { key: "root", storage };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: persistedReducer,
